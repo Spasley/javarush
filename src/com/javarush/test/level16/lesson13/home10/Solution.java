@@ -17,6 +17,7 @@ import java.nio.file.Paths;
 Ожидаемый вывод:
 [все тело первого файла]
 [все тело второго файла]
+тест
 */
 
 public class Solution {
