@@ -11,7 +11,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
-/*public class Solution {
+public class Solution {
     public static void main(String[] args) {
         args = new String[1];
         args[0] = "/home/volodka/data";
@@ -39,30 +39,5 @@ import java.util.ArrayList;
         catch (IOException e) {}
 
         
-    }
-}*/
-
-public class Solution {
-    public static void main(String[] args) {
-        args = new String[1];
-        args[0] = "/home/volodka/data";
-        String fileName = args[0];
-        String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-        try
-        {
-            int count = 0;
-            FileInputStream fis = new FileInputStream(fileName);
-            while (fis.available() > 0) {
-                byte temp = (byte) fis.read();
-                if (alphabet.contains(String.valueOf(temp))) {
-                    count++;
-                }
-            }
-            System.out.println(count);
-            fis.close();
-        }
-        catch (IOException e) {}
-
-
     }
 }
