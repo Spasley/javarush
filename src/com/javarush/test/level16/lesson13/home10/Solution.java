@@ -1,8 +1,9 @@
 package com.javarush.test.level16.lesson13.home10;
 
-import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 
 /* Последовательный вывод файлов
 1. Разберись, что делает программа.
@@ -17,21 +18,11 @@ import java.nio.file.Paths;
 Ожидаемый вывод:
 [все тело первого файла]
 [все тело второго файла]
-тест
-*/
+
 
 public class Solution {
     public static String firstFileName;
     public static String secondFileName;
-    static {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        try {
-            firstFileName = reader.readLine();
-            secondFileName = reader.readLine();
-            reader.close();
-        }
-        catch (IOException e) {}
-    }
 
     public static void main(String[] args) throws InterruptedException {
         systemOutPrintln(firstFileName);
@@ -55,40 +46,5 @@ public class Solution {
 
         void start();
     }
-
-    public static class ReadFileThread implements Runnable, ReadFileInterface {
-        private String sourceFile;
-
-        public void run() {
-            try
-            {
-                BufferedReader reader = new BufferedReader(new FileReader(sourceFile));
-                while (reader.ready())
-                {
-                    System.out.println(reader.readLine());
-                }
-            }
-            catch (IOException e) {}
-
-
-        }
-
-        public void setFileName(String fullFileName) {
-            this.sourceFile = fullFileName;
-        }
-
-        public String getFileContent(){
-            try {
-                byte[] encoded = Files.readAllBytes(Paths.get(sourceFile));
-                return new String(encoded, "utf-8");
-
-            }
-            catch (IOException e) {}
-            return null;
-        }
-
-        public void join() {}
-
-        public void start() {}
-    }
 }
+*/
