@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="49e868cb-6c28-469e-9a04-9674b5bddb2b" name="Default" comment="почти готова">
+    <list default="true" id="49e868cb-6c28-469e-9a04-9674b5bddb2b" name="Default" comment="почти готова level15.lesson12.home09. нужно поправить парсинг параметров без значение">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/javarush/test/level15/lesson12/home09/Solution.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="JavaRushHomeWork.iws" />
@@ -120,8 +121,8 @@
       <file leaf-file-name="Solution.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/javarush/test/level15/lesson12/home09/Solution.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="47" selection-start-line="0" selection-start-column="26" selection-end-line="0" selection-end-column="49" />
+            <state vertical-scroll-proportion="0.4914163">
+              <caret line="42" column="51" selection-start-line="42" selection-start-column="51" selection-end-line="42" selection-end-column="51" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -749,7 +750,13 @@
       <option name="project" value="LOCAL" />
       <updated>1454087443339</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="почти готова level15.lesson12.home09. нужно поправить парсинг параметров без значение">
+      <created>1454167182143</created>
+      <option name="number" value="00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1454167182143</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -835,7 +842,8 @@
     <MESSAGE value="level19.lesson10.home10" />
     <MESSAGE value="level19.lesson10.home01" />
     <MESSAGE value="level18.lesson10.home07" />
-    <option name="LAST_COMMIT_MESSAGE" value="level18.lesson10.home07" />
+    <MESSAGE value="почти готова level15.lesson12.home09. нужно поправить парсинг параметров без значение" />
+    <option name="LAST_COMMIT_MESSAGE" value="почти готова level15.lesson12.home09. нужно поправить парсинг параметров без значение" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1087,6 +1095,24 @@
           <properties />
           <option name="timeStamp" value="315" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/javarush/test/level15/lesson12/home09/Solution.java</url>
+          <line>35</line>
+          <properties />
+          <option name="timeStamp" value="319" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/javarush/test/level15/lesson12/home09/Solution.java</url>
+          <line>36</line>
+          <properties />
+          <option name="timeStamp" value="320" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/javarush/test/level15/lesson12/home09/Solution.java</url>
+          <line>37</line>
+          <properties />
+          <option name="timeStamp" value="321" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-field">
           <url>file://$PROJECT_DIR$/src/com/javarush/test/level15/lesson12/home08/Solution.java</url>
           <line>15</line>
@@ -1109,7 +1135,7 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="319" />
+      <option name="time" value="322" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1561,8 +1587,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/javarush/test/level15/lesson12/home09/Solution.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="47" selection-start-line="0" selection-start-column="26" selection-end-line="0" selection-end-column="49" />
+        <state vertical-scroll-proportion="0.4914163">
+          <caret line="42" column="51" selection-start-line="42" selection-start-column="51" selection-end-line="42" selection-end-column="51" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
