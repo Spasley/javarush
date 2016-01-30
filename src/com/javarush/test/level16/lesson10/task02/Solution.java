@@ -17,62 +17,39 @@ public class Solution {
     public static volatile int countSeconds = 4;
 
     public static void main(String[] args) throws InterruptedException {
-
         RacingClock clock = new RacingClock();
-        clock.join();
-
-
-
+        Thread.sleep(3500);
+        clock.interrupt();
         //add your code here - добавь код тут
-
-
-        /*if (!clock.isInterrupted())
-        {
-            Thread.currentThread().interrupt();
-            System.out.print("Прервано!");
-        }
-        else
-        {
-            System.out.print("Марш!");
-        }*/
-
-
     }
 
     public static class RacingClock extends Thread {
         public RacingClock() {
             start();
-
         }
 
         public void run() {
             //add your code here - добавь код тут
-            String countdown;
             Date start = new Date();
-            try
-            {
-                for (int i = countSeconds; i >= 1; i--)
-                {
-                    System.out.print(countdown = i + " ");
+            Date end = null;
+            try {
+            for (int i = countSeconds; i > 0; i--) {
+                System.out.print(i + " ");
+
+
                     Thread.sleep(1000);
 
+                //catch (InterruptedException e) {}
+                //end = new Date();
+
                 }
-            }
-            catch (InterruptedException e)
-            {
+                System.out.println("Марш!");
 
             }
-            Date end = new Date();
+            catch (InterruptedException e) {
+                System.out.println("Прервано!");
+            }
 
-            if (end.getTime() - start.getTime() < 3500)
-            {
-                System.out.print("Марш!");
-            }
-            else
-            {
-                Thread.currentThread().interrupt();
-                System.out.print("Прервано!");
-            }
         }
     }
 }
