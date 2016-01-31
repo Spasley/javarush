@@ -22,25 +22,26 @@ f 361
 */
 
 import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.Map;
 import java.util.TreeMap;
 
 public class Solution {
     public static void main(String[] args) {
-        //args = new String[1];
-        //args[0] = "d:\\data.txt";
+        args = new String[1];
+        args[0] = "d:\\data.txt";
         String filename = args[0];
         TreeMap<Byte, Integer> result = new TreeMap();
         try
         {
-            FileInputStream fis = new FileInputStream(filename);
+            FileReader fis = new FileReader(filename);
             byte currentByte = (byte) fis.read();
-            while (fis.available() > 0) {
+            while (fis.ready()) {
                 if (result.containsKey(currentByte)) {
                     result.put(currentByte, result.get(currentByte) + 1);
                 }
-                else if (currentByte != 10){
+                else if (currentByte != 10 && currentByte != 13){
                     result.put(currentByte, 1);
                 }
                 currentByte = (byte) fis.read();
@@ -48,7 +49,7 @@ public class Solution {
             if (result.containsKey(currentByte)) {
                 result.put(currentByte, result.get(currentByte) + 1);
             }
-            else if (currentByte != 10){
+            else if (currentByte != 10 && currentByte != 13){
                 result.put(currentByte, 1);
             }
             fis.close();
