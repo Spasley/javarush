@@ -15,6 +15,8 @@ price - цена, double
 quantity - количество, int
 
 Информация по каждому товару хранится в отдельной строке
+
+
 */
 
 import java.io.BufferedReader;
@@ -26,25 +28,26 @@ import java.util.Scanner;
 public class Solution {
     public static void main(String[] args) {
         //args = new String[1];
-        //args[0] = "12";
+        //args[0] = "123";
         int parameter = Integer.parseInt(args[0]);
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String fileName = null;
         String result = null;
-        int id = 0;
         try {
             fileName = reader.readLine();
             Scanner read = new Scanner(new File(fileName));
             while (read.hasNext()) {
-                id = Integer.parseInt(read.next());
-                if (id == parameter) {
-                    result = read.nextLine();
-                }
-                else {
-                    read.nextLine();
+                String temp = read.nextLine();
+                String[] currentLine = temp.split(" ");
+                if (currentLine[0].equals(args[0])) {
+                    result = temp;
+                    break;
                 }
             }
-            System.out.println(parameter + result);
+            if (!(result == null))
+            {
+                System.out.println(result);
+            }
             read.close();
             reader.close();
         }
