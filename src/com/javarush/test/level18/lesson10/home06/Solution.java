@@ -28,8 +28,8 @@ import java.util.TreeMap;
 
 public class Solution {
     public static void main(String[] args) {
-        args = new String[1];
-        args[0] = "/home/volodka/data";
+        //args = new String[1];
+        //args[0] = "d:\\data.txt";
         String filename = args[0];
         TreeMap<Byte, Integer> result = new TreeMap();
         try
@@ -44,6 +44,12 @@ public class Solution {
                     result.put(currentByte, 1);
                 }
                 currentByte = (byte) fis.read();
+            }
+            if (result.containsKey(currentByte)) {
+                result.put(currentByte, result.get(currentByte) + 1);
+            }
+            else if (currentByte != 10){
+                result.put(currentByte, 1);
             }
             fis.close();
         }
