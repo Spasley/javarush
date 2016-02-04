@@ -13,9 +13,13 @@ public class Solution {
         Counter counter4 = new Counter();
 
         counter1.start();
+        counter1.join();
         counter2.start();
+        counter2.join();
         counter3.start();
+        counter3.join();
         counter4.start();
+        counter4.join();
 
         for (int i = 1; i <= 100; i++) {
             if (values[i] != 1) {
@@ -23,6 +27,10 @@ public class Solution {
                 break;
             }
         }
+
+        /*for (Integer val : values) {
+            System.out.print(val + " ");
+        }*/
     }
 
     public static Integer count = 0;
@@ -46,16 +54,17 @@ public class Solution {
         @Override
         public void run() {
             do {
-                synchronized (this) {
+                synchronized (Solution.class) {
                     incrementCount();
                     values[getCount()]++;
                 }
-
                 try {
                     Thread.sleep(1);
-                } catch (InterruptedException e) {
                 }
-            } while (getCount() < 100);
+                catch (InterruptedException e) {}
+            }
+
+            while (getCount() < 100);
         }
     }
 }
