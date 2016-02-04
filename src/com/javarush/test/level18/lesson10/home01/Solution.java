@@ -7,37 +7,27 @@ package com.javarush.test.level18.lesson10.home01;
 Закрыть потоки. Не использовать try-with-resources
 */
 
-import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class Solution {
     public static void main(String[] args) {
-        args = new String[1];
-        args[0] = "/home/volodka/data";
+        //args = new String[1];
+        //args[0] = "/home/volodka/data";
         String fileName = args[0];
-        ArrayList<Byte> alphabet = new ArrayList<>();
-        for (int i = 0; i < 26; i++) {
-            alphabet.add((byte) (i + 65));
-        }
-        for (int i = 27; i <= 52; i++) {
-            alphabet.add((byte) (i + 70));
-        }
-        try
-        {
-            int count = 0;
-            FileInputStream fis = new FileInputStream(fileName);
-            while (fis.available() > 0) {
-                byte temp = (byte) fis.read();
-                if (alphabet.contains(temp)) {
-                    count++;
-                }
+        int count = 0;
+        try {
+        FileReader fileReader = new FileReader(fileName);
+        while (fileReader.ready()) {
+            char ch = (char) fileReader.read();
+            if (String.valueOf(ch).matches("[a-zA-Z]")) {
+                count++;
             }
-            System.out.println(count);
-            fis.close();
+        }
+            fileReader.close();
         }
         catch (IOException e) {}
+        System.out.println(count);
 
-        
     }
 }
