@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 /* CRUD 2
 CrUD Batch - multiple Creation, Updates, Deletion
@@ -33,43 +34,104 @@ id соответствует индексу в списке
 */
 
 public class Solution {
-    public static List<Person> allPeople = new ArrayList<Person>();
+    public volatile static List<Person> allPeople = new ArrayList<Person>();
     static {
         allPeople.add(Person.createMale("Иванов Иван", new Date()));  //сегодня родился    id=0
         allPeople.add(Person.createMale("Петров Петр", new Date()));  //сегодня родился    id=1
     }
 
-    public static void main(String[] args) throws ParseException {
+    public static void main(String[] args) {
         //start here - начни тут
-        String name = null;
+        String name = "";
         Sex sex = null;
         int id;
-        Date bd;
+        Date bd = null;
         String firstParam = args[0];
         switch (firstParam) {
             case "-c" :
                 for (String paramValue : args) {
-                    if (!(paramValue.length() == 1)) {
-                        name += paramValue;
-                        name += " ";
-                    }
-                    else if (paramValue.length() == 1) {
-                        if (paramValue.equals("ж")) {
-                            sex = Sex.FEMALE;
+                    try{
+                        bd = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH).parse(paramValue);
+                        synchronized (allPeople)
+                        {
+                            allPeople.add((sex == Sex.MALE ? Person.createMale(name.trim(), bd) : Person.createFemale(name.trim(), bd)));
+                            System.out.println(allPeople.indexOf(allPeople.get(allPeople.size() - 1)));
                         }
-                        else {
-                            sex = Sex.MALE;
-                        }
+                        name = "";
                     }
-                    else {
-                        bd = new SimpleDateFormat("dd/MM/yyyy").parse(paramValue);
-                        allPeople.add((sex == Sex.MALE ? Person.createMale(name.trim(), bd) : Person.createFemale(name.trim(), bd)));
-                        name = null;
-                        bd = null;
-                        sex = null;
+                    catch (ParseException e)
+                    {
+                        if (!(paramValue.length() == 1) && !paramValue.equals("-c"))
+                        {
+                            name += paramValue;
+                            name += " ";
+                        } else if (paramValue.length() == 1)
+                        {
+                            if (paramValue.equals("ж"))
+                            {
+                                sex = Sex.FEMALE;
+                            } else
+                            {
+                                sex = Sex.MALE;
+                            }
+                        }
                     }
                 }
+                break;
+            case "-u" :
+                id = Integer.parseInt(args[1]);
+                for (String paramValue : args)
+                {
+                    try
+                    {
+                        bd = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH).parse(paramValue);
+                        synchronized (allPeople)
+                        {
+                            allPeople.set(id, (sex == Sex.MALE ? Person.createMale(name.trim(), bd) : Person.createFemale(name.trim(), bd)));
+                            System.out.println(allPeople.indexOf(allPeople.get(allPeople.size() - 1)));
+                        }
+                        name = "";
+                    }
+                    catch (ParseException e)
+                    {
+                        if (!(paramValue.length() == 1) && !paramValue.equals("-u"))
+                        {
+                            name += paramValue;
+                            name += " ";
+                        } else if (paramValue.length() == 1)
+                        {
+                            if (paramValue.equals("ж"))
+                            {
+                                sex = Sex.FEMALE;
+                            } else
+                            {
+                                sex = Sex.MALE;
+                            }
+                        }
+                    }
+                }
+                break;
+            case "-i" :
+                for (String paramValue : args) {
+                    if (!paramValue.equals("-i")) {
+                        id = Integer.parseInt(paramValue);
+                        System.out.println(allPeople.get(id).getName() + " " + (allPeople.get(id).getSex() == Sex.MALE ?
+                        "м" : "ж") + " " + new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH).format(allPeople.get(id).getBirthDay()));
+                    }
+                }
+                break;
+            case "-d" :
+                for (String paramValue : args) {
+                    if (!paramValue.equals("-d")) {
+                        id = Integer.parseInt(paramValue);
+                        synchronized (allPeople)
+                        {
+                            allPeople.set(id, Person.createFemale(null, null));
+                            allPeople.get(id).setSex(null);
+                        }
+                    }
+                }
+                break;
         }
-        System.out.println(allPeople);
     }
 }
