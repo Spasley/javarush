@@ -40,8 +40,16 @@ public class Solution {
         allPeople.add(Person.createMale("Петров Петр", new Date()));  //сегодня родился    id=1
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         //start here - начни тут
+        synchronized (Solution.class)
+        {
+            proceed(args);
+        }
+    }
+
+    public static synchronized void proceed(String[] args) {
         String name = "";
         Sex sex = null;
         int id;
@@ -52,11 +60,8 @@ public class Solution {
                 for (String paramValue : args) {
                     try{
                         bd = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH).parse(paramValue);
-                        synchronized (allPeople)
-                        {
-                            allPeople.add((sex == Sex.MALE ? Person.createMale(name.trim(), bd) : Person.createFemale(name.trim(), bd)));
-                            System.out.println(allPeople.indexOf(allPeople.get(allPeople.size() - 1)));
-                        }
+                        allPeople.add((sex == Sex.MALE ? Person.createMale(name.trim(), bd) : Person.createFemale(name.trim(), bd)));
+                        System.out.println(allPeople.indexOf(allPeople.get(allPeople.size() - 1)));
                         name = "";
                     }
                     catch (ParseException e)
@@ -67,13 +72,7 @@ public class Solution {
                             name += " ";
                         } else if (paramValue.length() == 1)
                         {
-                            if (paramValue.equals("ж"))
-                            {
-                                sex = Sex.FEMALE;
-                            } else
-                            {
-                                sex = Sex.MALE;
-                            }
+                            sex = paramValue.equals("ж")  ? Sex.FEMALE :Sex.MALE;
                         }
                     }
                 }
@@ -85,10 +84,7 @@ public class Solution {
                     try
                     {
                         bd = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH).parse(paramValue);
-                        synchronized (allPeople)
-                        {
-                            allPeople.set(id, (sex == Sex.MALE ? Person.createMale(name.trim(), bd) : Person.createFemale(name.trim(), bd)));
-                        }
+                        allPeople.set(id, (sex == Sex.MALE ? Person.createMale(name.trim(), bd) : Person.createFemale(name.trim(), bd)));
                         name = "";
                     }
                     catch (ParseException e)
@@ -99,12 +95,13 @@ public class Solution {
                             name += " ";
                         } else if (paramValue.length() == 1)
                         {
-                            if (paramValue.equals("ж"))
+                            try
                             {
-                                sex = Sex.FEMALE;
-                            } else
+                                id = Integer.parseInt(paramValue);
+                            }
+                            catch (NumberFormatException ex)
                             {
-                                sex = Sex.MALE;
+                                sex = paramValue.equals("ж") ? Sex.FEMALE : Sex.MALE;
                             }
                         }
                     }
@@ -115,7 +112,7 @@ public class Solution {
                     if (!paramValue.equals("-i")) {
                         id = Integer.parseInt(paramValue);
                         System.out.println(allPeople.get(id).getName() + " " + (allPeople.get(id).getSex() == Sex.MALE ?
-                        "м" : "ж") + " " + new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH).format(allPeople.get(id).getBirthDay()));
+                                "м" : "ж") + " " + new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH).format(allPeople.get(id).getBirthDay()));
                     }
                 }
                 break;
@@ -123,14 +120,12 @@ public class Solution {
                 for (String paramValue : args) {
                     if (!paramValue.equals("-d")) {
                         id = Integer.parseInt(paramValue);
-                        synchronized (allPeople)
-                        {
-                            allPeople.set(id, Person.createFemale(null, null));
-                            allPeople.get(id).setSex(null);
-                        }
+                        allPeople.set(id, Person.createFemale(null, null));
+                        allPeople.get(id).setSex(null);
                     }
                 }
                 break;
         }
     }
 }
+
