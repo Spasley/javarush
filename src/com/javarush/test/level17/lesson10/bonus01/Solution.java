@@ -61,9 +61,11 @@ public class Solution {
                 if (sex.equals("ж"))
                 {
                     allPeople.add(Person.createFemale(name, bd));
+                    System.out.println(allPeople.indexOf(allPeople.get(allPeople.size() - 1)));
                 } else if (sex.equals("м"))
                 {
                     allPeople.add(Person.createMale(name, bd));
+                    System.out.println(allPeople.indexOf(allPeople.get(allPeople.size() - 1)));
                 }
                 break;
             case "-u":
@@ -90,7 +92,7 @@ public class Solution {
                 break;
             case "-i":
                 id = Integer.parseInt(args[1]);
-                System.out.println(id + ":" + " " + allPeople.get(id).getName() + " " + (allPeople.get(id).getSex() == Sex.MALE ? "м" : "ж")
+                System.out.println(allPeople.get(id).getName() + " " + (allPeople.get(id).getSex() == Sex.MALE ? "м" : "ж")
                         + " " + new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH).format(allPeople.get(id).getBirthDay()));
                 break;
             case "-d":
