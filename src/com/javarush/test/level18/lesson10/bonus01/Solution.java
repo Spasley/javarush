@@ -13,25 +13,59 @@ fileOutputName - имя файла, куда необходимо записат
 -d - ключ указывает, что необходимо расшифровать данные
 */
 
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 
 public class Solution
 {
-    String key;
-    String fileName;
-    String FileOutputName;
-    FileReader fileReader;
-    FileWriter fileWriter;
-
     public static void main(String[] args)
     {
+        String key = args[0];
+        switch (key) {
+            case "-e" :
+                encode(args[1], args[2]);
+            case "-d" :
+                decode(args[1], args[2]);
+        }
 
     }
 
-    public static void encode()
+    public static void encode(String fileName, String fileOutputName)
     {
+        FileReader fileReader;
+        FileWriter fileWriter;
+        try
+        {
+            fileReader = new FileReader(fileName);
+            fileWriter = new FileWriter(fileOutputName, true);
+            while (fileReader.ready()) {
+                int temp = fileReader.read();
+                fileWriter.write(temp + 1);
+            }
+            fileReader.close();
+        }
+        catch (IOException e) {
+            System.out.println("File not found");
+        }
+    }
 
-
+    public static void decode(String fileName, String fileOutputName)
+    {
+        FileReader fileReader;
+        FileWriter fileWriter;
+        try
+        {
+            fileReader = new FileReader(fileName);
+            fileWriter = new FileWriter(fileOutputName);
+            while (fileReader.ready()) {
+                int temp = fileReader.read();
+                fileWriter.write(temp - 1);
+            }
+        }
+        catch (IOException e) {
+            System.out.println("File not found");
+        }
     }
 }
