@@ -1,5 +1,7 @@
 package com.javarush.test.level17.lesson10.bonus02;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -37,7 +39,37 @@ public class Solution {
         allPeople.add(Person.createMale("Петров Петр", new Date()));  //сегодня родился    id=1
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
         //start here - начни тут
+        String name = null;
+        Sex sex = null;
+        int id;
+        Date bd;
+        String firstParam = args[0];
+        switch (firstParam) {
+            case "-c" :
+                for (String paramValue : args) {
+                    if (!(paramValue.length() == 1)) {
+                        name += paramValue;
+                        name += " ";
+                    }
+                    else if (paramValue.length() == 1) {
+                        if (paramValue.equals("ж")) {
+                            sex = Sex.FEMALE;
+                        }
+                        else {
+                            sex = Sex.MALE;
+                        }
+                    }
+                    else {
+                        bd = new SimpleDateFormat("dd/MM/yyyy").parse(paramValue);
+                        allPeople.add((sex == Sex.MALE ? Person.createMale(name.trim(), bd) : Person.createFemale(name.trim(), bd)));
+                        name = null;
+                        bd = null;
+                        sex = null;
+                    }
+                }
+        }
+        System.out.println(allPeople);
     }
 }
