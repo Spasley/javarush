@@ -88,7 +88,6 @@ public class Solution {
                         synchronized (allPeople)
                         {
                             allPeople.set(id, (sex == Sex.MALE ? Person.createMale(name.trim(), bd) : Person.createFemale(name.trim(), bd)));
-                            System.out.println(allPeople.indexOf(allPeople.get(allPeople.size() - 1)));
                         }
                         name = "";
                     }
