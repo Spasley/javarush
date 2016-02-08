@@ -26,8 +26,10 @@ public class Solution
         switch (key) {
             case "-e" :
                 encode(args[1], args[2]);
+                break;
             case "-d" :
                 decode(args[1], args[2]);
+                break;
         }
 
     }
@@ -39,12 +41,15 @@ public class Solution
         try
         {
             fileReader = new FileReader(fileName);
-            fileWriter = new FileWriter(fileOutputName, true);
+            fileWriter = new FileWriter(fileOutputName);
+            fileWriter.flush();
             while (fileReader.ready()) {
                 int temp = fileReader.read();
-                fileWriter.write(temp + 1);
+                fileWriter.write(temp - 1);
+                fileWriter.flush();
             }
             fileReader.close();
+            fileWriter.close();
         }
         catch (IOException e) {
             System.out.println("File not found");
@@ -61,11 +66,15 @@ public class Solution
             fileWriter = new FileWriter(fileOutputName);
             while (fileReader.ready()) {
                 int temp = fileReader.read();
-                fileWriter.write(temp - 1);
+                fileWriter.write(temp + 1);
+                fileWriter.flush();
             }
+            fileReader.close();
+            fileWriter.close();
         }
         catch (IOException e) {
             System.out.println("File not found");
         }
+
     }
 }
