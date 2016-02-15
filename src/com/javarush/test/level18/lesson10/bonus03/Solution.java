@@ -24,62 +24,65 @@ id productName price quantity
 19847983Куртка для сноубордистов, разм10173.991234
 */
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.Scanner;
 
 public class Solution {
     public static void main(String[] args) throws Exception {
         String key = args[0];
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        File catalog = new File(reader.readLine());
 
         //проверяем значение параметра
-        if (key.equals("-c")) {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-            File catalog = new File(reader.readLine());
-            String id = args[1];
-            String productName = args[2];
-            String price = args[3];
-            String quantity = args[4];
-            String lineForUpdate;
+        switch (key) {
+            case "-u" :
+                String id = args[1];
+                String productName = args[2];
+                String price = args[3];
+                String quantity = args[4];
+                String lineForUpdate;
 
-            //сканируем файл и ищем максимальный айди, если в файле уже есть записи
-            Scanner catalogScanner = new Scanner(catalog);
-            catalogScanner.useDelimiter("\\n");
-            if (catalogScanner.hasNext()) {
-                while (catalogScanner.hasNext())
-                {
-                    String lastLine = catalogScanner.next();
-                    String currentId = lastLine.substring(0, 8).trim());
-                    if (currentId.equals(id)) {
-                        lineForUpdate = lastLine;
-                        break;
+                //подготавливаем данные для записи - если длина строки больше заданной, обрезаем до нужной (???) если меньше -
+                //добиваем пробелами
+                String idForWrite = id.length() == 8 ? id.substring(0, 8) :
+                        id + new String(new char[8 - id.length()]).replace("\0", " ");
+                productName = productName.length() == 30 ? productName.substring(0, 30) :
+                        productName + new String(new char[30 - productName.length()]).replace("\0", " ");
+                price = price.length() == 8 ? price.substring(0, 8) :
+                        price + new String(new char[8 - price.length()]).replace("\0", " ");
+                quantity = quantity.length() == 4 ? quantity.substring(0, 4) :
+                        quantity + new String(new char[4 - quantity.length()]).replace("\0", " ");
+
+                //сканируем файл и ищем айди, который нужно изменить, если в файле есть записи
+                Scanner catalogScanner = new Scanner(catalog);
+                catalogScanner.useDelimiter("\\n");
+                if (catalogScanner.hasNext()) {
+                    File temp = new File("/home/volodka/temp.txt");
+                    FileWriter tempFileWriter = new FileWriter(temp);
+                    while (catalogScanner.hasNext())
+                    {
+                        String lastLine = catalogScanner.next();
+                        String currentId = lastLine.substring(0, 8).trim();
+                        if (currentId.equals(id)) {
+                            lastLine = lastLine.replace(lastLine, idForWrite + productName + price + quantity + "\n");
+                        }
+                        tempFileWriter.write(lastLine);
                     }
+
+                    FileReader tempFileReader = new FileReader(temp);
+                    while (tempFileReader.ready()) {
+                        int copying = tempFileReader.read();
+                        tempFileWriter.write(copying);
+                    }
+                    tempFileWriter.close();
+                    tempFileReader.close();
                 }
-            }
 
-            //подготавливаем данные для записи - если длина строки больше заданной, обрезаем до нужной (???) если меньше -
-            //добиваем пробелами
-            lastId = maxId == 0 ? 1 : ++maxId;
-            String lastIdAsString = String.valueOf(lastId);
-            String idForWrite = lastIdAsString.length() == 8 ? lastIdAsString.substring(0, 8) :
-                    lastIdAsString + new String(new char[8 - lastIdAsString.length()]).replace("\0", " ");
-            productName = productName.length() == 30 ? productName.substring(0, 30) :
-                    productName + new String(new char[30 - productName.length()]).replace("\0", " ");
-            price = price.length() == 8 ? price.substring(0, 8) :
-                    price + new String(new char[8 - price.length()]).replace("\0", " ");
-            quantity = quantity.length() == 4 ? quantity.substring(0, 4) :
-                    quantity + new String(new char[4 - quantity.length()]).replace("\0", " ");
+                catalogScanner.close();
+                reader.close();
 
-            //создаем "писатель", записываем строку в конец файла, закрываем потоки/сканеры
-            FileWriter writer = new FileWriter(catalog, true);
-            writer.write(idForWrite + productName + price + quantity + "\n");
-            writer.flush();
-            catalogScanner.close();
-            writer.close();
-            reader.close();
+            case "-d" :
+
         }
-
     }
 }
