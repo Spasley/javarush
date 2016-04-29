@@ -40,17 +40,17 @@ public class Solution {
                 if (result.containsKey(currentByte)) {
                     result.put(currentByte, result.get(currentByte) + 1);
                 }
-                else if (currentByte != 10 && currentByte != 13){
+                else /*if (currentByte != 10 && currentByte != 13)*/{
                     result.put(currentByte, 1);
                 }
                 currentByte = (byte) fis.read();
             }
-            if (result.containsKey(currentByte)) {
+            /*if (result.containsKey(currentByte)) {
                 result.put(currentByte, result.get(currentByte) + 1);
             }
             else if (currentByte != 10 && currentByte != 13){
                 result.put(currentByte, 1);
-            }
+            }*/
             fis.close();
         }
         catch (IOException e) {}
