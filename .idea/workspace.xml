@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="49e868cb-6c28-469e-9a04-9674b5bddb2b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/javarush/test/level19/lesson05/task04/Solution.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/javarush/test/level16/lesson13/home10/Solution.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/JavaRushHomeWork/com/javarush/test/level18/lesson10/home06/Solution.class" afterPath="$PROJECT_DIR$/out/production/JavaRushHomeWork/com/javarush/test/level18/lesson10/home06/Solution.class" />
+    <list default="true" id="49e868cb-6c28-469e-9a04-9674b5bddb2b" name="Default" comment="level19.lesson05.task04 решено">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/javarush/test/level18/lesson10/home06/Solution.java" afterPath="$PROJECT_DIR$/src/com/javarush/test/level18/lesson10/home06/Solution.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="JavaRushHomeWork.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
+    <ignored mask="workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -85,22 +83,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Solution.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Solution.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/javarush/test/level18/lesson10/home06/Solution.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="54" column="9" selection-start-line="54" selection-start-column="9" selection-end-line="54" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Solution.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/javarush/test/level19/lesson05/task04/Solution.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
               <caret line="0" column="26" selection-start-line="0" selection-start-column="26" selection-end-line="0" selection-end-column="49" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#844#859#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -203,8 +194,8 @@
         <option value="$PROJECT_DIR$/src/com/javarush/test/level18/lesson10/bonus03/Solution.java" />
         <option value="$PROJECT_DIR$/src/com/javarush/test/level18/lesson10/home01/Solution.java" />
         <option value="$PROJECT_DIR$/src/com/javarush/test/level19/lesson05/task05/Solution.java" />
-        <option value="$PROJECT_DIR$/src/com/javarush/test/level18/lesson10/home06/Solution.java" />
         <option value="$PROJECT_DIR$/src/com/javarush/test/level19/lesson05/task04/Solution.java" />
+        <option value="$PROJECT_DIR$/src/com/javarush/test/level18/lesson10/home06/Solution.java" />
       </list>
     </option>
   </component>
@@ -564,7 +555,7 @@
     <property name="last_opened_file_path" value="$USER_HOME$/autotests" />
     <property name="recentsLimit" value="5" />
     <property name="dynamic.classpath" value="false" />
-    <property name="settings.editor.selected.configurable" value="settings.github" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Ignored.Files" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
@@ -574,7 +565,7 @@
     <property name="restartRequiresConfirmation" value="true" />
     <property name="FullScreen" value="false" />
   </component>
-  <component name="RunManager" selected="Application.Solution (4)">
+  <component name="RunManager" selected="Application.Solution (2)">
     <configuration default="false" name="crud and tables - update/delete" type="Application" factoryName="Application" temporary="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -849,8 +840,8 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Application.Solution (4)" />
-        <item index="1" class="java.lang.String" itemvalue="Application.Solution (2)" />
+        <item index="0" class="java.lang.String" itemvalue="Application.Solution (2)" />
+        <item index="1" class="java.lang.String" itemvalue="Application.Solution (4)" />
         <item index="2" class="java.lang.String" itemvalue="Application.Solution (1)" />
         <item index="3" class="java.lang.String" itemvalue="Application.Solution (3)" />
         <item index="4" class="java.lang.String" itemvalue="Application.crud and tables - update/delete" />
@@ -1034,7 +1025,13 @@
       <option name="project" value="LOCAL" />
       <updated>1461922258509</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="level19.lesson05.task04 решено">
+      <created>1461924840207</created>
+      <option name="number" value="00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1461924840207</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1058,7 +1055,7 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14755897" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32967636" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21979167" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.10208333" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
@@ -1137,7 +1134,8 @@
     <MESSAGE value="level18.lesson10.bonus02 сделано" />
     <MESSAGE value="level18.lesson10.bonus03 in progress" />
     <MESSAGE value="level19.lesson05.task05 решено" />
-    <option name="LAST_COMMIT_MESSAGE" value="level19.lesson05.task05 решено" />
+    <MESSAGE value="level19.lesson05.task04 решено" />
+    <option name="LAST_COMMIT_MESSAGE" value="level19.lesson05.task04 решено" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1832,19 +1830,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/javarush/test/level18/lesson10/home06/Solution.java">
+    <entry file="file://$PROJECT_DIR$/src/com/javarush/test/level19/lesson05/task04/Solution.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="54" column="9" selection-start-line="54" selection-start-column="9" selection-end-line="54" selection-end-column="9" />
+        <state vertical-scroll-proportion="0.20027816">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/javarush/test/level19/lesson05/task04/Solution.java">
+    <entry file="file://$PROJECT_DIR$/src/com/javarush/test/level18/lesson10/home06/Solution.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="26" selection-start-line="0" selection-start-column="26" selection-end-line="0" selection-end-column="49" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#844#859#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

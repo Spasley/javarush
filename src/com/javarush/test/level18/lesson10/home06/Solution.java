@@ -9,11 +9,6 @@ package com.javarush.test.level18.lesson10.home06;
 [символ2]  частота2
 Закрыть потоки. Не использовать try-with-resources
 
-1. Прочитать имя файла
-2. Начать перебор побайтово, добавляя их в словарь
- 2.1 Если байт уже есть в массиве, увеличить валуе на 1
- 2.2 Если байта нет в массиве, добавить новый ключ с валуе = 1
-3. Отсортировать сет
 
 Пример вывода:
 , 19
@@ -27,33 +22,23 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class Solution {
-    public static void main(String[] args) {
-        args = new String[1];
-        args[0] = "/home/volodka/data";
+    public static void main(String[] args) throws IOException {
+        //args = new String[1];
+        //args[0] = "/home/volodka/data";
         String filename = args[0];
-        TreeMap<Byte, Integer> result = new TreeMap();
-        try
-        {
-            FileReader fis = new FileReader(filename);
-            byte currentByte = (byte) fis.read();
-            while (fis.ready()) {
-                if (result.containsKey(currentByte)) {
-                    result.put(currentByte, result.get(currentByte) + 1);
-                }
-                else /*if (currentByte != 10 && currentByte != 13)*/{
-                    result.put(currentByte, 1);
-                }
-                currentByte = (byte) fis.read();
-            }
-            /*if (result.containsKey(currentByte)) {
+        TreeMap<Byte, Integer> result = new TreeMap<Byte, Integer>();
+        FileReader fis = new FileReader(filename);
+        byte currentByte = (byte) fis.read();
+        while (fis.ready()) {
+            if (result.containsKey(currentByte)) {
                 result.put(currentByte, result.get(currentByte) + 1);
             }
-            else if (currentByte != 10 && currentByte != 13){
+            else /*if (currentByte != 10 && currentByte != 13)*/{
                 result.put(currentByte, 1);
-            }*/
-            fis.close();
+            }
+            currentByte = (byte) fis.read();
         }
-        catch (IOException e) {}
+        fis.close();
         for (Map.Entry<Byte, Integer> map : result.entrySet()) {
             System.out.println(String.valueOf(Character.toChars((int) map.getKey())) + " " + map.getValue());
         }
