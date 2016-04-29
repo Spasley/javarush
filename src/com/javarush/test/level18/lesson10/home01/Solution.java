@@ -13,7 +13,7 @@ import java.io.IOException;
 public class Solution {
     public static void main(String[] args) {
         //args = new String[1];
-        //args[0] = "/home/volodka/data";
+        //args[0] = "/home/volodka/ex2.regex";
         String fileName = args[0];
         int count = 0;
         try {
@@ -26,7 +26,7 @@ public class Solution {
         }
             fileReader.close();
         }
-        catch (IOException e) {}
+        catch (IOException e) {System.out.print(' ');}
         System.out.println(count);
 
     }
