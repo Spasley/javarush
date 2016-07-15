@@ -16,20 +16,17 @@ public class Solution {
         //you can find your_file_name.tmp in your TMP directory or fix outputStream/inputStream according to your real file location
         //вы можете найти your_file_name.tmp в папке TMP или исправьте outputStream/inputStream в соответствии с путем к вашему реальному файлу
         try {
-
             File your_file_name = File.createTempFile("your_file_name", null);
             OutputStream outputStream = new FileOutputStream(your_file_name);
             InputStream inputStream = new FileInputStream(your_file_name);
-
-            Human ivanov = new Human("Ivanov", new Asset("home"), new Asset("car"));
+            Human ivanov = new Human("Ivanov");
             ivanov.save(outputStream);
             outputStream.flush();
-
             Human somePerson = new Human();
             somePerson.load(inputStream);
             //check here that ivanov equals to somePerson - проверьте тут, что ivanov и somePerson равны
             inputStream.close();
-
+            outputStream.close();
         } catch (IOException e) {
             //e.printStackTrace();
             System.out.println("Oops, something wrong with my file");
@@ -38,66 +35,54 @@ public class Solution {
             System.out.println("Oops, something wrong with save/load method");
         }
     }
-
-
     public static class Human {
         public String name;
         public List<Asset> assets = new ArrayList<>();
-
         public Human() {
         }
-
         public Human(String name, Asset... assets) {
             this.name = name;
             if (assets != null) {
                 this.assets.addAll(Arrays.asList(assets));
             }
         }
-
         public void save(OutputStream outputStream) throws Exception {
             //implement this method - реализуйте этот метод
-            PrintWriter pw = new PrintWriter(outputStream);
-            String delimiter = "person delimiter";
-            boolean isHasName = this.name!=null;
-            pw.println(isHasName);
-            if (isHasName) {
-                pw.println(this.name);
-            }
-            boolean isHasAssets = this.assets!=null;
-            pw.println(isHasAssets);
-            if (isHasAssets) {
-                for (Asset asset : assets) {
-                    pw.println(asset.getName());
-                    pw.println(asset.getPrice());
+            PrintWriter printWriter = new PrintWriter(outputStream);
+            printWriter.println(name);
+            if (assets.size() > 0)
+            {
+                printWriter.println(assets.size());
+                for (Asset a : assets)
+                {
+                    printWriter.println(a.getName());
+                    printWriter.println(a.getPrice());
                 }
             }
+            printWriter.close();
         }
-
         public void load(InputStream inputStream) throws Exception {
             //implement this method - реализуйте этот метод
             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-            while (inputStream.available() > 0) {
-                String currentLine = reader.readLine();
-                if (currentLine.equals("person delimiter"))
+            String sName = reader.readLine();
+            if (sName != null)
+                    name = sName; // 1 загрузил name
+            try
+            {
+                int lenghtMas = Integer.parseInt(reader.readLine()); // 2 загрузил длину массива
+                if (lenghtMas > 0)
                 {
-                    boolean isHasName = Boolean.getBoolean(reader.readLine());
-                    if (isHasName)
+                    for (int i = 0; i < lenghtMas; i++)
                     {
-                        String name = reader.readLine();
-                        boolean isHasAssets = Boolean.getBoolean(reader.readLine());
-                        ArrayList<Asset> assets = new ArrayList<>();
-                        while (isHasAssets)
-                        {
-                            String assetName = reader.readLine();
-                            Asset asset = new Asset(assetName);
-                            asset.setPrice(Double.parseDouble(reader.readLine()));
-                            assets.add(asset);
-                            currentLine = (reader.readLine());
-                            if (currentLine.equals("person delimiter")) { continue; } else {break;}
-                        }
+                        Asset asset = new Asset(reader.readLine()); // 3 загрузил name из Asset
+                        asset.setPrice(Double.parseDouble(reader.readLine())); // загрузил price
+                        assets.add(asset); // добавил объект в массив
                     }
                 }
             }
+            catch (Exception e) {}
+
+            reader.close();
         }
     }
 }
